@@ -61,10 +61,33 @@ class PygView(object):
             
     def run(self):
         self.paint() 
-        myball = Ball(startx=100,starty=200) # creating the Ball object
-        myball2= Ball( radius = 10, color=(0,255,0), x=500, y=160,
+        myball = Ball(startx=100,starty=100) # creating the Ball object
+        myball2= Ball( radius = 10, color=(0,0,150), x=500, y=160,
+                    up=pygame.K_w,down=pygame.K_s,left=pygame.K_a,right=pygame.K_d,
+                    startx=100,starty=200)
+        myball3=Ball( radius = 15, color=(0,0,100), x=500, y=160,
+                    up=pygame.K_w,down=pygame.K_s,left=pygame.K_a,right=pygame.K_d,
+                    startx=100,starty=300)
+        myball4=Ball( radius = 5, color=(0,255,0), x=500, y=160,
                     up=pygame.K_UP,down=pygame.K_DOWN,left=pygame.K_LEFT,right=pygame.K_RIGHT,
-                    startx=300,starty=200)
+                    startx=1300,starty=100)
+        myball5=Ball( radius = 10, color=(0,150,0), x=600, y=160,
+                    up=pygame.K_UP,down=pygame.K_DOWN,left=pygame.K_LEFT,right=pygame.K_RIGHT,
+                    startx=1300,starty=200)
+        myball6=Ball( radius = 15, color=(0,100,0), x=700, y=160,
+                    up=pygame.K_UP,down=pygame.K_DOWN,left=pygame.K_LEFT,right=pygame.K_RIGHT,
+                    startx=1300,starty=300)
+        myball7=Ball( radius = 10, color=(100,0,0), x=500, y=160,
+                    up=pygame.K_UP,down=pygame.K_DOWN,left=pygame.K_LEFT,right=pygame.K_RIGHT,
+                    startx=600,starty=600)
+        myball8=Ball( radius = 10, color=(180,0,0), x=500, y=160,
+                    up=pygame.K_UP,down=pygame.K_DOWN,left=pygame.K_LEFT,right=pygame.K_RIGHT,
+                    startx=650,starty=600)
+        myball9=Ball( radius = 10, color=(255,0,0), x=500, y=160,
+                    up=pygame.K_UP,down=pygame.K_DOWN,left=pygame.K_LEFT,right=pygame.K_RIGHT,
+                    startx=700,starty=600)
+                    
+                    
         running = True
         while running:
             milliseconds = self.clock.tick(self.fps)
@@ -108,7 +131,7 @@ class PygView(object):
 
 class Ball(pygame.sprite.Sprite):
     """this is a native pygame sprite but instead a pygame surface"""
-    def __init__(self, radius = 5, color=(0,0,255), x=320, y=240,
+    def __init__(self, radius = 5, color=(0,0,200), x=320, y=240,
                     up=pygame.K_w,down=pygame.K_s,left=pygame.K_a,right=pygame.K_d,
                     startx=100,starty=100):
         """create a (black) surface and paint a blue ball on it"""
@@ -140,13 +163,13 @@ class Ball(pygame.sprite.Sprite):
     def update(self, seconds):
         pressedkeys = pygame.key.get_pressed() # keys that you can press all the time
         if pressedkeys[self.leftkey]:
-                self.dx -=10
+                self.dx -=100
         if pressedkeys[self.rightkey]:
-                self.dx +=10
+                self.dx +=100
         if pressedkeys[self.upkey]:
-                self.dy -= 10
+                self.dy -= 100
         if pressedkeys[self.downkey]:
-                self.dy += 10
+                self.dy += 100
         self.x += self.dx * seconds
         self.y += self.dy * seconds
         # wrap around screen
@@ -177,4 +200,5 @@ class Ball(pygame.sprite.Sprite):
         
 if __name__ == '__main__':
     PygView(1450,815).run() # call with width of window and fps
+
 
