@@ -1,5 +1,5 @@
 # pygamelearning
 
 pogramms to learn pygame
-![screenshot](/bildschirmfoto.png)
+![screenshot](/Bildschirmfoto.png)
 
