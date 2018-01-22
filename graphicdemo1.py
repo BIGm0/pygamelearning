@@ -24,8 +24,10 @@ class PygView(object):
         PygView.height = height
         self.screen = pygame.display.set_mode((self.width, self.height), pygame.DOUBLEBUF)
         self.background = pygame.Surface(self.screen.get_size()).convert()  
-        self.background.fill((255,255,255)) # fill background white
+        #self.background.fill((255,255,255)) # fill background white
         self.clock = pygame.time.Clock()
+        self.background=pygame.image.load("Crane2.png")
+        self.background=pygame.transform.scale(self.background,(self.width,self.height))
         self.fps = fps
         self.playtime = 0.0
         self.font = pygame.font.SysFont('mono', 24, bold=True)
@@ -36,6 +38,7 @@ class PygView(object):
         
         
     def paint(self):
+        
         """painting on the surface"""
         #pygame.draw.arc(self.background, (0,150,0),(725,10,725,420),start,end,1)
         xpoints=[]
@@ -200,5 +203,4 @@ class Ball(pygame.sprite.Sprite):
         
 if __name__ == '__main__':
     PygView(1450,815).run() # call with width of window and fps
-
 
